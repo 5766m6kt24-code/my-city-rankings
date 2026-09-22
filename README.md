@@ -1,5 +1,6 @@
 # my-city-rankings
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,87 +17,85 @@
     <!-- Leaflet JS Library -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
-   ```
-<style>
-    body {
-        font-family: 'Inter', sans-serif;
-    }
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 8px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-        background: #f1f5f9;
-        border-radius: 4px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 4px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-    }
-    .dragging {
-        opacity: 0.5;
-        background-color: #f1f5f9;
-        border: 2px dashed #6366f1;
-    }
-    .drag-over {
-        border-top: 3px solid #4f46e5;
-    }
-    /* Custom Leaflet Map Pins */
-    .trophy-marker {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        color: white;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.35);
-        border: 2px solid white;
-        transition: transform 0.2s ease;
-    }
-    .trophy-marker:hover {
-        transform: scale(1.18);
-        z-index: 1000 !important;
-    }
-    .trophy-gold {
-        background: linear-gradient(135deg, #f59e0b, #d97706);
-        border-color: #fef3c7;
-    }
-    .trophy-silver {
-        background: linear-gradient(135deg, #94a3b8, #64748b);
-        border-color: #f1f5f9;
-    }
-    .trophy-bronze {
-        background: linear-gradient(135deg, #b45309, #78350f);
-        border-color: #fde68a;
-    }
-    .standard-pin {
-        background: linear-gradient(135deg, #4f46e5, #3730a3);
-        border: 2px solid white;
-        border-radius: 50%;
-        color: white;
-        font-size: 11px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-        transition: transform 0.2s ease;
-    }
-    .standard-pin:hover {
-        transform: scale(1.15);
-        z-index: 1000 !important;
-    }
-    .leaflet-popup-content-wrapper {
-        border-radius: 12px;
-        padding: 4px;
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-    }
-</style>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .dragging {
+            opacity: 0.5;
+            background-color: #f1f5f9;
+            border: 2px dashed #6366f1;
+        }
+        .drag-over {
+            border-top: 3px solid #4f46e5;
+        }
+        /* Custom Leaflet Map Pins */
+        .trophy-marker {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+            border: 2px solid white;
+            transition: transform 0.2s ease;
+        }
+        .trophy-marker:hover {
+            transform: scale(1.18);
+            z-index: 1000 !important;
+        }
+        .trophy-gold {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-color: #fef3c7;
+        }
+        .trophy-silver {
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+            border-color: #f1f5f9;
+        }
+        .trophy-bronze {
+            background: linear-gradient(135deg, #b45309, #78350f);
+            border-color: #fde68a;
+        }
+        .standard-pin {
+            background: linear-gradient(135deg, #4f46e5, #3730a3);
+            border: 2px solid white;
+            border-radius: 50%;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+        }
+        .standard-pin:hover {
+            transform: scale(1.15);
+            z-index: 1000 !important;
+        }
+        .leaflet-popup-content-wrapper {
+            border-radius: 12px;
+            padding: 4px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col h-screen overflow-hidden">
 
-```
-
-```
 <header class="bg-slate-900 text-white shadow-md z-20 flex-none">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
         
@@ -155,7 +154,7 @@
     <div class="bg-white rounded-t-xl shadow-sm border border-slate-200 border-b-0 p-3.5 flex-none">
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
             
-            <!-- View Tabs (Browse, Ranked List, Interactive Map) -->
+            <!-- View Tabs -->
             <div class="flex bg-slate-100 p-1 rounded-xl border border-slate-200">
                 <button id="tab-browse" onclick="switchTab('browse')" class="flex-1 sm:flex-initial px-4 py-2 rounded-lg font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-2 bg-white text-indigo-600 shadow-sm">
                     <i class="fa-solid fa-list-ul"></i>
@@ -242,9 +241,6 @@
         <div id="view-browse" class="flex-1 overflow-y-auto custom-scrollbar p-3.5 space-y-2">
             <div id="city-list-container" class="space-y-2">
                 <!-- Dynamic city cards -->
-            </div>
-            <div id="load-more-trigger" class="py-4 text-center text-xs text-slate-400">
-                Scroll down to load more cities...
             </div>
         </div>
 
@@ -390,7 +386,7 @@
 </div>
 
 <!-- Toast Notification Popup -->
-<div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl text-xs font-medium translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2.5 z-50">
+<div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl text-xs font-medium translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2.5 z-50 pointer-events-none">
     <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
     <span id="toast-message">Notification</span>
 </div>
@@ -471,669 +467,491 @@
         { name: "Venice", state: "Veneto", country: "Italy", continent: "Europe", pop: 260000, lat: 45.4408, lng: 12.3155 },
         { name: "Madrid", state: "Madrid", country: "Spain", continent: "Europe", pop: 6700000, lat: 40.4168, lng: -3.7038 },
         { name: "Barcelona", state: "Catalonia", country: "Spain", continent: "Europe", pop: 5600000, lat: 41.3851, lng: 2.1734 },
-        { name: "Amsterdam", state: "North Holland", country: "Netherlands", continent: "Europe", pop: 1150000, lat: 52.3676, lng: 4.9041 },
+        { name: "Amsterdam", state: "North Holland", country: "Netherlands", continent: "Europe", pop: 2400000, lat: 52.3676, lng: 4.9041 },
         { name: "Vienna", state: "Vienna", country: "Austria", continent: "Europe", pop: 1900000, lat: 48.2082, lng: 16.3738 },
         { name: "Prague", state: "Prague", country: "Czech Republic", continent: "Europe", pop: 1300000, lat: 50.0755, lng: 14.4378 },
-        { name: "Lisbon", state: "Lisbon", country: "Portugal", continent: "Europe", pop: 2900000, lat: 38.7223, lng: -9.1393 },
-        { name: "Porto", state: "Porto", country: "Portugal", continent: "Europe", pop: 1300000, lat: 41.1579, lng: -8.6291 },
-        { name: "Athens", state: "Attica", country: "Greece", continent: "Europe", pop: 3150000, lat: 37.9838, lng: 23.7275 },
-        { name: "Dublin", state: "Leinster", country: "Ireland", continent: "Europe", pop: 1250000, lat: 53.3498, lng: -6.2603 },
-        { name: "Stockholm", state: "Stockholm", country: "Sweden", continent: "Europe", pop: 1600000, lat: 59.3293, lng: 18.0686 },
-        { name: "Copenhagen", state: "Capital Region", country: "Denmark", continent: "Europe", pop: 1330000, lat: 55.6761, lng: 12.5683 },
-        { name: "Oslo", state: "Oslo", country: "Norway", continent: "Europe", pop: 1060000, lat: 59.9139, lng: 10.7522 },
-        { name: "Zurich", state: "Zurich", country: "Switzerland", continent: "Europe", pop: 1400000, lat: 47.3769, lng: 8.5417 },
-        { name: "Geneva", state: "Geneva", country: "Switzerland", continent: "Europe", pop: 600000, lat: 46.2044, lng: 6.1432 },
-        { name: "Istanbul", state: "Istanbul", country: "Turkey", continent: "Europe", pop: 15800000, lat: 41.0082, lng: 28.9784 },
 
         // South America
         { name: "São Paulo", state: "São Paulo", country: "Brazil", continent: "South America", pop: 22400000, lat: -23.5505, lng: -46.6333 },
-        { name: "Rio de Janeiro", state: "Rio de Janeiro", country: "Brazil", continent: "South America", pop: 13600000, lat: -22.9068, lng: -43.1729 },
-        { name: "Buenos Aires", state: "Buenos Aires", country: "Argentina", continent: "South America", pop: 15500000, lat: -34.6037, lng: -58.3816 },
-        { name: "Bogotá", state: "Cundinamarca", country: "Colombia", continent: "South America", pop: 11400000, lat: 4.7110, lng: -74.0721 },
-        { name: "Medellín", state: "Antioquia", country: "Colombia", continent: "South America", pop: 4000000, lat: 6.2442, lng: -75.5812 },
-        { name: "Lima", state: "Lima", country: "Peru", continent: "South America", pop: 11200000, lat: -12.0463, lng: -77.0428 },
+        { name: "Rio de Janeiro", state: "Rio de Janeiro", country: "Brazil", continent: "South America", pop: 13300000, lat: -22.9068, lng: -43.1729 },
+        { name: "Buenos Aires", state: "Capital Federal", country: "Argentina", continent: "South America", pop: 15300000, lat: -34.6037, lng: -58.3816 },
+        { name: "Bogotá", state: "Cundinamarca", country: "Colombia", continent: "South America", pop: 11300000, lat: 4.7110, lng: -74.0721 },
+        { name: "Lima", state: "Lima", country: "Peru", continent: "South America", pop: 11000000, lat: -12.0464, lng: -77.0428 },
         { name: "Santiago", state: "Santiago Metropolitan", country: "Chile", continent: "South America", pop: 6800000, lat: -33.4489, lng: -70.6693 },
 
         // Africa
-        { name: "Cairo", state: "Cairo", country: "Egypt", continent: "Africa", pop: 22100000, lat: 30.0444, lng: 31.2357 },
-        { name: "Lagos", state: "Lagos", country: "Nigeria", continent: "Africa", pop: 15900000, lat: 6.5244, lng: 3.3792 },
-        { name: "Johannesburg", state: "Gauteng", country: "South Africa", continent: "Africa", pop: 6100000, lat: -26.2041, lng: 28.0473 },
-        { name: "Cape Town", state: "Western Cape", country: "South Africa", continent: "Africa", pop: 4800000, lat: -33.9249, lng: 18.4241 },
+        { name: "Cairo", state: "Cairo", country: "Egypt", continent: "Africa", pop: 21700000, lat: 30.0444, lng: 31.2357 },
+        { name: "Lagos", state: "Lagos", country: "Nigeria", continent: "Africa", pop: 15400000, lat: 6.5244, lng: 3.3792 },
+        { name: "Johannesburg", state: "Gauteng", country: "South Africa", continent: "Africa", pop: 6000000, lat: -26.2041, lng: 28.0473 },
+        { name: "Cape Town", state: "Western Cape", country: "South Africa", continent: "Africa", pop: 4700000, lat: -33.9249, lng: 18.4241 },
         { name: "Nairobi", state: "Nairobi", country: "Kenya", continent: "Africa", pop: 5100000, lat: -1.2921, lng: 36.8219 },
-        { name: "Casablanca", state: "Casablanca-Settat", country: "Morocco", continent: "Africa", pop: 3800000, lat: 33.5731, lng: -7.5898 },
 
         // Oceania
         { name: "Sydney", state: "New South Wales", country: "Australia", continent: "Oceania", pop: 5300000, lat: -33.8688, lng: 151.2093 },
         { name: "Melbourne", state: "Victoria", country: "Australia", continent: "Oceania", pop: 5000000, lat: -37.8136, lng: 144.9631 },
-        { name: "Brisbane", state: "Queensland", country: "Australia", continent: "Oceania", pop: 2600000, lat: -27.4705, lng: 153.0260 },
-        { name: "Perth", state: "Western Australia", country: "Australia", continent: "Oceania", pop: 2100000, lat: -31.9505, lng: 115.8605 },
+        { name: "Brisbane", state: "Queensland", country: "Australia", continent: "Oceania", pop: 2500000, lat: -27.4705, lng: 153.0260 },
         { name: "Auckland", state: "Auckland", country: "New Zealand", continent: "Oceania", pop: 1650000, lat: -36.8485, lng: 174.7633 }
     ];
 
-    // Unique Identifier Helper
-    function getCityKey(city) {
-        return `${city.name}|${city.state}|${city.country}`;
+    // Helper: Generate unique ID for a city
+    function getCityId(city) {
+        return `${city.name}-${city.state}-${city.country}`.replace(/\s+/g, '_').toLowerCase();
     }
 
-    // Global State Management
-    let appState = {
-        activeProfile: 'Default Profile',
-        profiles: {
-            'Default Profile': {
-                visitedKeys: [], // Keys of checked cities
-                rankedKeys: []   // Explicit ordered array of visited city keys
-            }
-        },
-        showPopulation: true
-    };
+    // Assign IDs to master dataset
+    CITIES_DATA.forEach(c => c.id = getCityId(c));
 
-    // UI State
-    let currentTab = 'browse';
-    let renderedBrowseCount = 30;
-    let mapInstance = null;
-    let mapMarkers = [];
-    let draggedItemIndex = null;
-
-    // Initialize App
-    document.addEventListener('DOMContentLoaded', () => {
-        loadStateFromLocalStorage();
-        sortCitiesDataset();
-        updateUIStats();
-        renderBrowseList();
-        setupInfiniteScroll();
+    // Sort Master Data Primary: Country (A-Z) -> State (A-Z) -> Metro Pop (Desc)
+    CITIES_DATA.sort((a, b) => {
+        if (a.country !== b.country) return a.country.localeCompare(b.country);
+        if (a.state !== b.state) return a.state.localeCompare(b.state);
+        return b.pop - a.pop;
     });
 
-    // Ensure Dataset Sorting Strategy: Country (A-Z) -> State/Province (A-Z) -> Metro Pop (Desc)
-    function sortCitiesDataset() {
-        CITIES_DATA.sort((a, b) => {
-            if (a.country < b.country) return -1;
-            if (a.country > b.country) return 1;
-            
-            if (a.state < b.state) return -1;
-            if (a.state > b.state) return 1;
-            
-            return b.pop - a.pop;
-        });
-    }
+    // App State Variables
+    let appState = {
+        activeProfile: "Default Profile",
+        profiles: {
+            "Default Profile": [] // Array of city IDs in ranked order
+        },
+        showPopulation: true,
+        currentTab: "browse"
+    };
 
-    // Local Storage Persistence
-    function loadStateFromLocalStorage() {
-        const saved = localStorage.getItem('global_city_ranker_data');
+    let leafletMap = null;
+    let mapMarkers = [];
+    let draggedIndex = null;
+
+    // Local Storage Sync
+    function loadState() {
+        const saved = localStorage.getItem('global_city_ranker_state');
         if (saved) {
             try {
                 const parsed = JSON.parse(saved);
                 appState = { ...appState, ...parsed };
-            } catch (e) {
-                console.error("Failed to parse saved state", e);
+            } catch(e) {
+                console.error("Failed to parse local storage:", e);
             }
         }
-        if (!appState.profiles[appState.activeProfile]) {
-            appState.profiles[appState.activeProfile] = { visitedKeys: [], rankedKeys: [] };
-        }
-        document.getElementById('active-profile-badge').innerText = appState.activeProfile;
         document.getElementById('toggle-pop-visibility').checked = appState.showPopulation;
+        updateProfileBadge();
     }
 
-    function saveStateToLocalStorage() {
-        localStorage.setItem('global_city_ranker_data', JSON.stringify(appState));
+    function saveState() {
+        localStorage.setItem('global_city_ranker_state', JSON.stringify(appState));
+        updateCounters();
     }
 
-    // Getters for Current Profile Data
-    function getCurrentProfile() {
-        return appState.profiles[appState.activeProfile] || { visitedKeys: [], rankedKeys: [] };
-    }
-
-    function isVisited(city) {
-        const key = getCityKey(city);
-        return getCurrentProfile().visitedKeys.includes(key);
-    }
-
-    // Toggle Visited Status
-    function toggleVisited(cityKey) {
-        const profile = getCurrentProfile();
-        const index = profile.visitedKeys.indexOf(cityKey);
-
-        if (index > -1) {
-            // Remove from visited and ranked
-            profile.visitedKeys.splice(index, 1);
-            const rankIdx = profile.rankedKeys.indexOf(cityKey);
-            if (rankIdx > -1) profile.rankedKeys.splice(rankIdx, 1);
-            showToast("City removed from visited list", "info");
-        } else {
-            // Add to visited and append to bottom of rankings
-            profile.visitedKeys.push(cityKey);
-            profile.rankedKeys.push(cityKey);
-            showToast("City marked as visited!", "success");
+    function getActiveRankedIds() {
+        if (!appState.profiles[appState.activeProfile]) {
+            appState.profiles[appState.activeProfile] = [];
         }
+        return appState.profiles[appState.activeProfile];
+    }
 
-        saveStateToLocalStorage();
-        updateUIStats();
+    // UI Formatting Helpers
+    function formatPop(num) {
+        if (!appState.showPopulation) return '';
+        if (num >= 1000000) {
+            return `(${(num / 1000000).toFixed(1)}M)`;
+        }
+        return `(${(num / 1000).toFixed(0)}k)`;
+    }
+
+    function showToast(msg, iconClass = "fa-circle-check text-emerald-400") {
+        const toast = document.getElementById('toast');
+        const icon = document.getElementById('toast-icon');
+        const text = document.getElementById('toast-message');
         
-        // Re-render based on current view
-        if (currentTab === 'browse') renderBrowseList();
-        else if (currentTab === 'ranked') renderRankedList();
-        else if (currentTab === 'map') updateMapMarkers();
+        icon.className = `fa-solid ${iconClass} text-sm`;
+        text.textContent = msg;
+        
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        
+        setTimeout(() => {
+            toast.classList.remove('translate-y-0', 'opacity-100');
+            toast.classList.add('translate-y-20', 'opacity-0');
+        }, 2500);
     }
 
-    // Stats Updates
-    function updateUIStats() {
-        const profile = getCurrentProfile();
-        const visitedCount = profile.visitedKeys.length;
-        const totalCount = CITIES_DATA.length;
-
-        document.getElementById('visited-count').innerText = visitedCount;
-        document.getElementById('total-count').innerText = totalCount;
-        document.getElementById('tab-visited-badge').innerText = visitedCount;
+    // UI Render Controllers
+    function updateCounters() {
+        const activeIds = getActiveRankedIds();
+        document.getElementById('visited-count').textContent = activeIds.length;
+        document.getElementById('total-count').textContent = CITIES_DATA.length;
+        document.getElementById('tab-visited-badge').textContent = activeIds.length;
     }
 
-    // Tab Switching Logic
-    function switchTab(tab) {
-        currentTab = tab;
-
-        const browseTabBtn = document.getElementById('tab-browse');
-        const rankedTabBtn = document.getElementById('tab-ranked');
-        const mapTabBtn = document.getElementById('tab-map');
-
-        const viewBrowse = document.getElementById('view-browse');
-        const viewRanked = document.getElementById('view-ranked');
-        const viewMap = document.getElementById('view-map');
-
-        const browseFilters = document.getElementById('browse-filters');
-        const browseSortingInfo = document.getElementById('browse-sorting-info');
-        const rankedActions = document.getElementById('ranked-actions');
-        const mapActions = document.getElementById('map-actions');
-
-        // Reset Tab Styling
-        [browseTabBtn, rankedTabBtn, mapTabBtn].forEach(btn => {
-            btn.className = "flex-1 sm:flex-initial px-4 py-2 rounded-lg font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-2 text-slate-600 hover:text-slate-900";
-        });
-
-        // Hide All Views & Actions
-        viewBrowse.classList.add('hidden');
-        viewRanked.classList.add('hidden');
-        viewMap.classList.add('hidden');
-        browseFilters.classList.add('hidden');
-        browseSortingInfo.classList.add('hidden');
-        rankedActions.classList.add('hidden');
-        mapActions.classList.add('hidden');
-
-        if (tab === 'browse') {
-            browseTabBtn.className = "flex-1 sm:flex-initial px-4 py-2 rounded-lg font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-2 bg-white text-indigo-600 shadow-sm";
-            viewBrowse.classList.remove('hidden');
-            browseFilters.classList.remove('hidden');
-            browseSortingInfo.classList.remove('hidden');
-            renderBrowseList();
-        } else if (tab === 'ranked') {
-            rankedTabBtn.className = "flex-1 sm:flex-initial px-4 py-2 rounded-lg font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-2 bg-white text-indigo-600 shadow-sm";
-            viewRanked.classList.remove('hidden');
-            rankedActions.classList.remove('hidden');
-            renderRankedList();
-        } else if (tab === 'map') {
-            mapTabBtn.className = "flex-1 sm:flex-initial px-4 py-2 rounded-lg font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-2 bg-white text-indigo-600 shadow-sm";
-            viewMap.classList.remove('hidden');
-            mapActions.classList.remove('hidden');
-            initOrUpdateMap();
-        }
-    }
-
-    // Filter and Search Logic
-    function getFilteredCities() {
-        const query = document.getElementById('search-input').value.toLowerCase().trim();
+    function renderBrowseView() {
+        const container = document.getElementById('city-list-container');
+        const search = document.getElementById('search-input').value.toLowerCase().trim();
         const region = document.getElementById('region-filter').value;
         const status = document.getElementById('status-filter').value;
+        const activeIds = getActiveRankedIds();
 
-        return CITIES_DATA.filter(city => {
-            const key = getCityKey(city);
-            const visited = isVisited(city);
-
-            // Text search match across City, State/Province, and Country
-            const matchQuery = !query || 
-                city.name.toLowerCase().includes(query) || 
-                city.state.toLowerCase().includes(query) || 
-                city.country.toLowerCase().includes(query);
-
-            // Region filter match
-            const matchRegion = region === 'All' || city.continent === region;
-
-            // Status filter match
-            let matchStatus = true;
-            if (status === 'visited') matchStatus = visited;
-            if (status === 'unvisited') matchStatus = !visited;
-
-            return matchQuery && matchRegion && matchStatus;
+        const filtered = CITIES_DATA.filter(city => {
+            const matchesSearch = city.name.toLowerCase().includes(search) || 
+                                  city.state.toLowerCase().includes(search) || 
+                                  city.country.toLowerCase().includes(search);
+            const matchesRegion = region === "All" || city.continent === region;
+            const isVisited = activeIds.includes(city.id);
+            const matchesStatus = status === "all" || 
+                                 (status === "visited" && isVisited) || 
+                                 (status === "unvisited" && !isVisited);
+            return matchesSearch && matchesRegion && matchesStatus;
         });
+
+        document.getElementById('results-count').textContent = `Showing ${filtered.length} cities`;
+
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div class="py-12 text-center text-slate-400 text-xs">
+                    <i class="fa-solid fa-filter-circle-xmark text-2xl mb-2 text-slate-300"></i>
+                    <p>No cities matching current filter criteria.</p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = filtered.map(city => {
+            const isVisited = activeIds.includes(city.id);
+            const rankIndex = activeIds.indexOf(city.id);
+            const popBadge = appState.showPopulation ? `<span class="text-slate-400 font-normal text-xs ml-1">${formatPop(city.pop)}</span>` : '';
+
+            return `
+                <div class="p-3 bg-slate-50 hover:bg-slate-100/80 border ${isVisited ? 'border-indigo-200 bg-indigo-50/30' : 'border-slate-200'} rounded-xl flex items-center justify-between gap-3 transition-all">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <input type="checkbox" onchange="toggleVisited('${city.id}')" ${isVisited ? 'checked' : ''} 
+                            class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500 cursor-pointer">
+                        <div class="min-w-0">
+                            <h4 class="font-bold text-slate-800 text-xs sm:text-sm truncate flex items-center gap-1">
+                                <span>${city.name}</span>
+                                ${popBadge}
+                            </h4>
+                            <p class="text-[11px] text-slate-500 truncate">${city.state}, <strong class="text-slate-600">${city.country}</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2 flex-none">
+                        ${isVisited ? `<span class="bg-indigo-100 text-indigo-700 font-bold text-[10px] px-2 py-0.5 rounded-full">Rank #${rankIndex + 1}</span>` : ''}
+                        <span class="text-[10px] font-semibold text-slate-400 bg-slate-200/60 px-2 py-0.5 rounded-md">${city.continent}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderRankedView() {
+        const container = document.getElementById('ranked-list-container');
+        const emptyState = document.getElementById('ranked-empty-state');
+        const instructions = document.getElementById('ranked-instructions');
+        const activeIds = getActiveRankedIds();
+
+        if (activeIds.length === 0) {
+            container.innerHTML = '';
+            emptyState.classList.remove('hidden');
+            instructions.classList.add('hidden');
+            return;
+        }
+
+        emptyState.classList.add('hidden');
+        instructions.classList.remove('hidden');
+
+        const rankedCities = activeIds.map(id => CITIES_DATA.find(c => c.id === id)).filter(Boolean);
+
+        container.innerHTML = rankedCities.map((city, index) => {
+            let trophyClass = "bg-slate-100 text-slate-600 border-slate-200";
+            let trophyIcon = `${index + 1}`;
+            
+            if (index === 0) {
+                trophyClass = "bg-gradient-to-br from-amber-400 to-amber-600 text-white border-amber-300 shadow-md shadow-amber-500/20";
+                trophyIcon = '<i class="fa-solid fa-trophy text-xs"></i>';
+            } else if (index === 1) {
+                trophyClass = "bg-gradient-to-br from-slate-300 to-slate-500 text-white border-slate-200 shadow-md";
+                trophyIcon = '<i class="fa-solid fa-trophy text-xs"></i>';
+            } else if (index === 2) {
+                trophyClass = "bg-gradient-to-br from-amber-700 to-amber-900 text-white border-amber-600 shadow-md";
+                trophyIcon = '<i class="fa-solid fa-trophy text-xs"></i>';
+            }
+
+            const popBadge = appState.showPopulation ? `<span class="text-slate-400 font-normal text-xs ml-1">${formatPop(city.pop)}</span>` : '';
+
+            return `
+                <div draggable="true" 
+                     ondragstart="handleDragStart(event, ${index})" 
+                     ondragover="handleDragOver(event, ${index})" 
+                     ondrop="handleDrop(event, ${index})" 
+                     ondragend="handleDragEnd(event)"
+                     class="p-3 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between gap-3 shadow-sm transition-all group cursor-grab active:cursor-grabbing">
+                    
+                    <div class="flex items-center gap-3 min-w-0">
+                        <i class="fa-solid fa-grip-vertical text-slate-300 group-hover:text-slate-400 text-xs flex-none"></i>
+                        
+                        <div class="w-7 h-7 rounded-full border flex items-center justify-center font-bold text-xs flex-none ${trophyClass}">
+                            ${trophyIcon}
+                        </div>
+
+                        <div class="min-w-0">
+                            <h4 class="font-bold text-slate-800 text-xs sm:text-sm truncate">
+                                ${city.name} ${popBadge}
+                            </h4>
+                            <p class="text-[11px] text-slate-500 truncate">${city.state}, <strong class="text-slate-600">${city.country}</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-1.5 flex-none">
+                        <button onclick="moveRank(${index}, -1)" ${index === 0 ? 'disabled class="opacity-20 cursor-not-allowed"' : 'class="p-1.5 hover:bg-slate-100 rounded-lg text-slate-500 hover:text-indigo-600 text-xs"'}>
+                            <i class="fa-solid fa-chevron-up"></i>
+                        </button>
+                        <button onclick="moveRank(${index}, 1)" ${index === activeIds.length - 1 ? 'disabled class="opacity-20 cursor-not-allowed"' : 'class="p-1.5 hover:bg-slate-100 rounded-lg text-slate-500 hover:text-indigo-600 text-xs"'}>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <button onclick="toggleVisited('${city.id}')" title="Remove from visited" class="p-1.5 hover:bg-rose-50 rounded-lg text-slate-400 hover:text-rose-600 text-xs ml-1 transition-colors">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function initMap() {
+        if (leafletMap) return;
+        
+        // Initialize Leaflet Map centered on world view
+        leafletMap = L.map('map-container', {
+            center: [20, 0],
+            zoom: 2,
+            zoomControl: false
+        });
+
+        L.control.zoom({ position: 'topright' }).addTo(leafletMap);
+
+        // Standard OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(leafletMap);
+    }
+
+    function renderMapView() {
+        initMap();
+        
+        // Clear previous markers
+        mapMarkers.forEach(m => leafletMap.removeLayer(m));
+        mapMarkers = [];
+
+        const activeIds = getActiveRankedIds();
+        if (activeIds.length === 0) return;
+
+        const bounds = [];
+
+        activeIds.forEach((id, index) => {
+            const city = CITIES_DATA.find(c => c.id === id);
+            if (!city) return;
+
+            bounds.push([city.lat, city.lng]);
+
+            let markerHtml = '';
+            let iconSize = [28, 28];
+
+            if (index === 0) {
+                markerHtml = `<div class="trophy-marker trophy-gold w-8 h-8"><i class="fa-solid fa-trophy text-xs"></i></div>`;
+                iconSize = [32, 32];
+            } else if (index === 1) {
+                markerHtml = `<div class="trophy-marker trophy-silver w-7 h-7"><i class="fa-solid fa-trophy text-[11px]"></i></div>`;
+                iconSize = [28, 28];
+            } else if (index === 2) {
+                markerHtml = `<div class="trophy-marker trophy-bronze w-7 h-7"><i class="fa-solid fa-trophy text-[11px]"></i></div>`;
+                iconSize = [28, 28];
+            } else {
+                markerHtml = `<div class="standard-pin w-6 h-6">${index + 1}</div>`;
+                iconSize = [24, 24];
+            }
+
+            const customIcon = L.divIcon({
+                html: markerHtml,
+                className: '',
+                iconSize: iconSize,
+                iconAnchor: [iconSize[0]/2, iconSize[1]/2]
+            });
+
+            const popText = appState.showPopulation ? `<div class="text-xs text-slate-500 mt-0.5">Metro Pop: <strong>${city.pop.toLocaleString()}</strong></div>` : '';
+
+            const popupHtml = `
+                <div class="p-1 text-center">
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">Rank #${index + 1}</span>
+                    <h4 class="font-bold text-slate-900 text-sm mt-1">${city.name}</h4>
+                    <p class="text-xs text-slate-600">${city.state}, ${city.country}</p>
+                    ${popText}
+                </div>
+            `;
+
+            const marker = L.marker([city.lat, city.lng], { icon: customIcon })
+                .bindPopup(popupHtml)
+                .addTo(leafletMap);
+
+            mapMarkers.push(marker);
+        });
+
+        // Fit map bounds if markers exist
+        if (bounds.length > 0) {
+            setTimeout(() => {
+                leafletMap.invalidateSize();
+                leafletMap.fitBounds(bounds, { padding: [50, 50], maxZoom: 8 });
+            }, 200);
+        }
+    }
+
+    function fitMapToBounds() {
+        if (!leafletMap || mapMarkers.length === 0) return;
+        const activeIds = getActiveRankedIds();
+        const bounds = activeIds.map(id => {
+            const c = CITIES_DATA.find(x => x.id === id);
+            return c ? [c.lat, c.lng] : null;
+        }).filter(Boolean);
+
+        if (bounds.length > 0) {
+            leafletMap.fitBounds(bounds, { padding: [50, 50], maxZoom: 8 });
+        }
+    }
+
+    // Interactive Actions & Tab Switchers
+    function switchTab(tabName) {
+        appState.currentTab = tabName;
+        
+        // Tab UI button styling
+        ['browse', 'ranked', 'map'].forEach(t => {
+            const btn = document.getElementById(`tab-${t}`);
+            const view = document.getElementById(`view-${t}`);
+            
+            if (t === tabName) {
+                btn.className = "flex-1 sm:flex-initial px-4 py-2 rounded-lg font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-2 bg-white text-indigo-600 shadow-sm";
+                view.classList.remove('hidden');
+            } else {
+                btn.className = "flex-1 sm:flex-initial px-4 py-2 rounded-lg font-medium text-xs sm:text-sm transition-all flex items-center justify-center gap-2 text-slate-600 hover:text-slate-900";
+                view.classList.add('hidden');
+            }
+        });
+
+        // Toggle action bar visibility
+        document.getElementById('browse-filters').style.display = (tabName === 'browse') ? 'grid' : 'none';
+        document.getElementById('browse-sorting-info').style.display = (tabName === 'browse') ? 'flex' : 'none';
+        document.getElementById('ranked-actions').classList.toggle('hidden', tabName !== 'ranked');
+        document.getElementById('map-actions').classList.toggle('hidden', tabName !== 'map');
+
+        // Render appropriate tab
+        if (tabName === 'browse') renderBrowseView();
+        if (tabName === 'ranked') renderRankedView();
+        if (tabName === 'map') renderMapView();
+    }
+
+    function toggleVisited(cityId) {
+        const activeIds = getActiveRankedIds();
+        const index = activeIds.indexOf(cityId);
+
+        if (index > -1) {
+            activeIds.splice(index, 1);
+            showToast("Removed from visited list", "fa-circle-xmark text-rose-400");
+        } else {
+            activeIds.push(cityId);
+            showToast("Added to visited list!");
+        }
+
+        saveState();
+        if (appState.currentTab === 'browse') renderBrowseView();
+        if (appState.currentTab === 'ranked') renderRankedView();
+        if (appState.currentTab === 'map') renderMapView();
+    }
+
+    function moveRank(currentIndex, direction) {
+        const activeIds = getActiveRankedIds();
+        const targetIndex = currentIndex + direction;
+
+        if (targetIndex < 0 || targetIndex >= activeIds.length) return;
+
+        const temp = activeIds[currentIndex];
+        activeIds[currentIndex] = activeIds[targetIndex];
+        activeIds[targetIndex] = temp;
+
+        saveState();
+        renderRankedView();
+    }
+
+    // Drag and Drop Logic
+    function handleDragStart(e, index) {
+        draggedIndex = index;
+        e.currentTarget.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handleDragOver(e, index) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+    }
+
+    function handleDrop(e, targetIndex) {
+        e.preventDefault();
+        if (draggedIndex === null || draggedIndex === targetIndex) return;
+
+        const activeIds = getActiveRankedIds();
+        const draggedItem = activeIds.splice(draggedIndex, 1)[0];
+        activeIds.splice(targetIndex, 0, draggedItem);
+
+        saveState();
+        renderRankedView();
+    }
+
+    function handleDragEnd(e) {
+        e.currentTarget.classList.remove('dragging');
+        draggedIndex = null;
+    }
+
+    function togglePopulationVisibility() {
+        appState.showPopulation = document.getElementById('toggle-pop-visibility').checked;
+        saveState();
+        if (appState.currentTab === 'browse') renderBrowseView();
+        if (appState.currentTab === 'ranked') renderRankedView();
+        if (appState.currentTab === 'map') renderMapView();
     }
 
     function handleSearch() {
-        const query = document.getElementById('search-input').value;
-        const clearBtn = document.getElementById('clear-search');
-        if (query.length > 0) clearBtn.classList.remove('hidden');
-        else clearBtn.classList.add('hidden');
-
-        renderedBrowseCount = 30;
-        renderBrowseList();
+        const val = document.getElementById('search-input').value;
+        document.getElementById('clear-search').classList.toggle('hidden', val.length === 0);
+        renderBrowseView();
     }
 
     function clearSearch() {
         document.getElementById('search-input').value = '';
         document.getElementById('clear-search').classList.add('hidden');
-        renderedBrowseCount = 30;
-        renderBrowseList();
+        renderBrowseView();
     }
 
     function handleFilter() {
-        renderedBrowseCount = 30;
-        renderBrowseList();
-    }
-
-    // Toggle Population Column/Badge Visibility
-    function togglePopulationVisibility() {
-        appState.showPopulation = document.getElementById('toggle-pop-visibility').checked;
-        saveStateToLocalStorage();
-        renderBrowseList();
-        renderRankedList();
-    }
-
-    // Render Browse List with Lazy Loading
-    function renderBrowseList() {
-        const container = document.getElementById('city-list-container');
-        const filtered = getFilteredCities();
-
-        document.getElementById('results-count').innerText = `Showing ${Math.min(renderedBrowseCount, filtered.length)} of ${filtered.length} cities`;
-
-        if (filtered.length === 0) {
-            container.innerHTML = `
-                <div class="py-12 text-center text-slate-400">
-                    <i class="fa-solid fa-magnifying-glass-location text-3xl mb-2"></i>
-                    <p class="text-sm font-medium">No cities match your current search and filters.</p>
-                </div>
-            `;
-            document.getElementById('load-more-trigger').classList.add('hidden');
-            return;
-        }
-
-        const visibleCities = filtered.slice(0, renderedBrowseCount);
-        let html = '';
-
-        visibleCities.forEach((city) => {
-            const key = getCityKey(city);
-            const visited = isVisited(city);
-            const formattedPop = (city.pop / 1000000).toFixed(2) + 'M';
-
-            html += `
-                <div class="p-3 bg-white rounded-xl border ${visited ? 'border-indigo-200 bg-indigo-50/30' : 'border-slate-200'} hover:border-indigo-300 transition-all flex items-center justify-between gap-3 shadow-sm">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <button onclick="toggleVisited('${key}')" class="w-6 h-6 rounded-lg flex items-center justify-center border transition-all ${visited ? 'bg-indigo-600 border-indigo-600 text-white' : 'bg-slate-100 border-slate-300 text-transparent hover:border-slate-400'}">
-                            <i class="fa-solid fa-check text-xs"></i>
-                        </button>
-
-                        <div class="min-w-0">
-                            <div class="flex items-center gap-2">
-                                <h4 class="font-bold text-slate-800 text-sm truncate">${city.name}</h4>
-                                <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md font-medium border border-slate-200 flex-none">${city.country}</span>
-                            </div>
-                            <p class="text-xs text-slate-500 truncate">${city.state} &bull; <span class="text-slate-400">${city.continent}</span></p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-3 flex-none">
-                        ${appState.showPopulation ? `
-                            <div class="text-right hidden sm:block">
-                                <span class="text-[10px] uppercase font-bold text-slate-400 block leading-tight">Metro Pop</span>
-                                <span class="text-xs font-semibold text-slate-700">${formattedPop}</span>
-                            </div>
-                        ` : ''}
-
-                        <button onclick="toggleVisited('${key}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${visited ? 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}">
-                            ${visited ? '<i class="fa-solid fa-check text-indigo-600 mr-1"></i> Visited' : '+ Mark Visited'}
-                        </button>
-                    </div>
-                </div>
-            `;
-        });
-
-        container.innerHTML = html;
-
-        const trigger = document.getElementById('load-more-trigger');
-        if (renderedBrowseCount < filtered.length) {
-            trigger.classList.remove('hidden');
-        } else {
-            trigger.classList.add('hidden');
-        }
-    }
-
-    // Infinite Scroll Setup
-    function setupInfiniteScroll() {
-        const browseView = document.getElementById('view-browse');
-        browseView.addEventListener('scroll', () => {
-            if (currentTab !== 'browse') return;
-            const { scrollTop, scrollHeight, clientHeight } = browseView;
-            if (scrollTop + clientHeight >= scrollHeight - 120) {
-                const filtered = getFilteredCities();
-                if (renderedBrowseCount < filtered.length) {
-                    renderedBrowseCount += 25;
-                    renderBrowseList();
-                }
-            }
-        });
-    }
-
-    // Render Visited & Drag-and-Drop Ranked List
-    function renderRankedList() {
-        const container = document.getElementById('ranked-list-container');
-        const emptyState = document.getElementById('ranked-empty-state');
-        const profile = getCurrentProfile();
-
-        // Filter out any stale keys
-        const validRankedKeys = profile.rankedKeys.filter(key => profile.visitedKeys.includes(key));
-        profile.rankedKeys = validRankedKeys;
-
-        if (validRankedKeys.length === 0) {
-            container.innerHTML = '';
-            emptyState.classList.remove('hidden');
-            document.getElementById('ranked-instructions').classList.add('hidden');
-            return;
-        }
-
-        emptyState.classList.add('hidden');
-        document.getElementById('ranked-instructions').classList.remove('hidden');
-
-        let html = '';
-
-        validRankedKeys.forEach((key, index) => {
-            const city = CITIES_DATA.find(c => getCityKey(c) === key);
-            if (!city) return;
-
-            const rank = index + 1;
-            const formattedPop = (city.pop / 1000000).toFixed(2) + 'M';
-
-            // Trophy Badge styling for top 3
-            let rankBadge = `<span class="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center flex-none">#${rank}</span>`;
-            if (rank === 1) {
-                rankBadge = `<span class="w-7 h-7 rounded-lg bg-gradient-to-tr from-amber-400 to-amber-500 text-white font-bold text-xs flex items-center justify-center shadow-md flex-none"><i class="fa-solid fa-trophy"></i></span>`;
-            } else if (rank === 2) {
-                rankBadge = `<span class="w-7 h-7 rounded-lg bg-gradient-to-tr from-slate-300 to-slate-400 text-white font-bold text-xs flex items-center justify-center shadow-sm flex-none"><i class="fa-solid fa-trophy"></i></span>`;
-            } else if (rank === 3) {
-                rankBadge = `<span class="w-7 h-7 rounded-lg bg-gradient-to-tr from-amber-700 to-amber-800 text-white font-bold text-xs flex items-center justify-center shadow-sm flex-none"><i class="fa-solid fa-trophy"></i></span>`;
-            }
-
-            html += `
-                <div draggable="true" 
-                     ondragstart="handleDragStart(event, ${index})" 
-                     ondragover="handleDragOver(event)" 
-                     ondragleave="handleDragLeave(event)"
-                     ondrop="handleDrop(event, ${index})" 
-                     ondragend="handleDragEnd(event)"
-                     class="p-3 bg-white rounded-xl border border-slate-200 hover:border-indigo-300 transition-all flex items-center justify-between gap-2 shadow-sm cursor-grab active:cursor-grabbing">
-                    
-                    <div class="flex items-center gap-2 sm:gap-3 min-w-0">
-                        <!-- Drag Handle -->
-                        <div class="text-slate-300 hover:text-slate-500 cursor-grab px-1">
-                            <i class="fa-solid fa-grip-vertical"></i>
-                        </div>
-
-                        ${rankBadge}
-
-                        <div class="min-w-0">
-                            <div class="flex items-center gap-2">
-                                <h4 class="font-bold text-slate-800 text-sm truncate">${city.name}</h4>
-                                <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-md font-medium border border-slate-200 flex-none">${city.country}</span>
-                            </div>
-                            <p class="text-xs text-slate-500 truncate">${city.state} &bull; <span class="text-slate-400">${city.continent}</span></p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center gap-2 flex-none">
-                        ${appState.showPopulation ? `
-                            <div class="text-right hidden md:block mr-2">
-                                <span class="text-[10px] uppercase font-bold text-slate-400 block leading-tight">Metro Pop</span>
-                                <span class="text-xs font-semibold text-slate-700">${formattedPop}</span>
-                            </div>
-                        ` : ''}
-
-                        <!-- Up / Down Reorder Buttons -->
-                        <div class="flex items-center bg-slate-100 rounded-lg p-0.5 border border-slate-200">
-                            <button onclick="moveRank(${index}, -1)" ${index === 0 ? 'disabled class="opacity-30 p-1 text-slate-400"' : 'class="p-1 text-slate-600 hover:text-indigo-600"'}>
-                                <i class="fa-solid fa-chevron-up text-xs"></i>
-                            </button>
-                            <button onclick="moveRank(${index}, 1)" ${index === validRankedKeys.length - 1 ? 'disabled class="opacity-30 p-1 text-slate-400"' : 'class="p-1 text-slate-600 hover:text-indigo-600"'}>
-                                <i class="fa-solid fa-chevron-down text-xs"></i>
-                            </button>
-                        </div>
-
-                        <!-- Remove from Visited -->
-                        <button onclick="toggleVisited('${key}')" class="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg transition-colors" title="Remove from list">
-                            <i class="fa-solid fa-xmark text-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            `;
-        });
-
-        container.innerHTML = html;
-    }
-
-    // Reordering Logic
-    function moveRank(index, direction) {
-        const profile = getCurrentProfile();
-        const targetIndex = index + direction;
-
-        if (targetIndex < 0 || targetIndex >= profile.rankedKeys.length) return;
-
-        // Swap positions
-        const temp = profile.rankedKeys[index];
-        profile.rankedKeys[index] = profile.rankedKeys[targetIndex];
-        profile.rankedKeys[targetIndex] = temp;
-
-        saveStateToLocalStorage();
-        renderRankedList();
-    }
-
-    // Drag-and-Drop Event Handlers
-    function handleDragStart(e, index) {
-        draggedItemIndex = index;
-        e.currentTarget.classList.add('dragging');
-        e.dataTransfer.effectAllowed = 'move';
-    }
-
-    function handleDragOver(e) {
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
-        e.currentTarget.classList.add('drag-over');
-    }
-
-    function handleDragLeave(e) {
-        e.currentTarget.classList.remove('drag-over');
-    }
-
-    function handleDrop(e, dropIndex) {
-        e.preventDefault();
-        e.currentTarget.classList.remove('drag-over');
-
-        if (draggedItemIndex === null || draggedItemIndex === dropIndex) return;
-
-        const profile = getCurrentProfile();
-        const draggedKey = profile.rankedKeys[draggedItemIndex];
-
-        profile.rankedKeys.splice(draggedItemIndex, 1);
-        profile.rankedKeys.splice(dropIndex, 0, draggedKey);
-
-        saveStateToLocalStorage();
-        renderRankedList();
-    }
-
-    function handleDragEnd(e) {
-        e.currentTarget.classList.remove('dragging');
-        draggedItemIndex = null;
-    }
-
-    // Interactive Leaflet Map Initialization
-    function initOrUpdateMap() {
-        if (!mapInstance) {
-            mapInstance = L.map('map-container', {
-                center: [20, 0],
-                zoom: 2,
-                zoomControl: false
-            });
-
-            // Add zoom control to top-right
-            L.control.zoom({ position: 'topright' }).addTo(mapInstance);
-
-            // Tile Layer (OpenStreetMap CartoDB Positron / Clean)
-            L.tileLayer('https://{s}[.basemaps.cartocdn.com/rastertiles/voyager/](https://.basemaps.cartocdn.com/rastertiles/voyager/){z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="[https://www.openstreetmap.org/copyright](https://www.openstreetmap.org/copyright)">OpenStreetMap</a> contributors &copy; <a href="[https://carto.com/attributions](https://carto.com/attributions)">CARTO</a>',
-                subdomains: 'abcd',
-                maxZoom: 19
-            }).addTo(mapInstance);
-        }
-
-        // Invalidate size in case tab switching caused container miscalculation
-        setTimeout(() => {
-            mapInstance.invalidateSize();
-            updateMapMarkers();
-        }, 100);
-    }
-
-    function updateMapMarkers() {
-        if (!mapInstance) return;
-
-        // Clear existing markers
-        mapMarkers.forEach(marker => mapInstance.removeLayer(marker));
-        mapMarkers = [];
-
-        const profile = getCurrentProfile();
-        const rankedKeys = profile.rankedKeys;
-
-        rankedKeys.forEach((key, index) => {
-            const city = CITIES_DATA.find(c => getCityKey(c) === key);
-            if (!city) return;
-
-            const rank = index + 1;
-            let iconHtml = '';
-            let className = '';
-            let size = [28, 28];
-
-            if (rank === 1) {
-                className = 'trophy-marker trophy-gold';
-                iconHtml = '<i class="fa-solid fa-trophy text-xs"></i>';
-                size = [34, 34];
-            } else if (rank === 2) {
-                className = 'trophy-marker trophy-silver';
-                iconHtml = '<i class="fa-solid fa-trophy text-xs"></i>';
-                size = [32, 32];
-            } else if (rank === 3) {
-                className = 'trophy-marker trophy-bronze';
-                iconHtml = '<i class="fa-solid fa-trophy text-xs"></i>';
-                size = [30, 30];
-            } else {
-                className = 'standard-pin';
-                iconHtml = `${rank}`;
-            }
-
-            const customIcon = L.divIcon({
-                className: className,
-                html: iconHtml,
-                iconSize: size,
-                iconAnchor: [size[0]/2, size[1]/2]
-            });
-
-            const formattedPop = (city.pop / 1000000).toFixed(2) + 'M';
-
-            const popupContent = `
-                <div class="p-2 text-center min-w-[160px]">
-                    <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${rank <= 3 ? 'bg-amber-100 text-amber-800' : 'bg-indigo-100 text-indigo-700'} mb-1">
-                        ${rank <= 3 ? `Rank #${rank} Trophy` : `Rank #${rank}`}
-                    </span>
-                    <h4 class="font-bold text-slate-800 text-sm leading-tight">${city.name}</h4>
-                    <p class="text-xs text-slate-500 mb-1">${city.state}, ${city.country}</p>
-                    ${appState.showPopulation ? `<p class="text-[11px] font-semibold text-slate-600 bg-slate-100 rounded py-0.5">Metro Pop: ${formattedPop}</p>` : ''}
-                </div>
-            `;
-
-            const marker = L.marker([city.lat, city.lng], { icon: customIcon })
-                .bindPopup(popupContent)
-                .addTo(mapInstance);
-
-            mapMarkers.push(marker);
-        });
-    }
-
-    function fitMapToBounds() {
-        if (!mapInstance || mapMarkers.length === 0) {
-            showToast("No visited markers on map to focus", "info");
-            return;
-        }
-
-        const group = new L.featureGroup(mapMarkers);
-        mapInstance.fitBounds(group.getBounds().pad(0.15));
-    }
-
-    // Export and Reset Functions
-    function exportList(format) {
-        const profile = getCurrentProfile();
-        if (profile.rankedKeys.length === 0) {
-            showToast("No visited cities to export!", "info");
-            return;
-        }
-
-        const rankedCities = profile.rankedKeys.map((key, i) => {
-            const city = CITIES_DATA.find(c => getCityKey(c) === key);
-            return {
-                rank: i + 1,
-                name: city ? city.name : '',
-                state: city ? city.state : '',
-                country: city ? city.country : '',
-                continent: city ? city.continent : '',
-                metro_pop: city ? city.pop : 0
-            };
-        });
-
-        if (format === 'text') {
-            let text = `My Top Ranked Cities (${appState.activeProfile}):\n\n`;
-            rankedCities.forEach(c => {
-                text += `${c.rank}. ${c.name}, ${c.state}, ${c.country}\n`;
-            });
-            navigator.clipboard.writeText(text);
-            showToast("Ranked list copied to clipboard!", "success");
-        } else if (format === 'json') {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(rankedCities, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `city_rankings_${appState.activeProfile.toLowerCase().replace(/\s+/g, '_')}.json`);
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
-            showToast("JSON file downloaded!", "success");
-        }
+        renderBrowseView();
     }
 
     function clearAllVisited() {
-        if (confirm(`Are you sure you want to clear all visited cities for profile "${appState.activeProfile}"?`)) {
-            const profile = getCurrentProfile();
-            profile.visitedKeys = [];
-            profile.rankedKeys = [];
-            saveStateToLocalStorage();
-            updateUIStats();
-            renderRankedList();
-            showToast("Profile rankings cleared", "info");
+        if (confirm("Are you sure you want to reset all visited cities for this profile?")) {
+            appState.profiles[appState.activeProfile] = [];
+            saveState();
+            renderRankedView();
+            showToast("Visited list cleared", "fa-trash-can text-rose-400");
         }
     }
 
-    // Profile Modal Logic
+    // Profile Management
+    function updateProfileBadge() {
+        document.getElementById('active-profile-badge').textContent = appState.activeProfile;
+    }
+
     function openProfileModal() {
-        const modal = document.getElementById('modal-profile');
         const select = document.getElementById('profile-select');
-
-        select.innerHTML = '';
-        Object.keys(appState.profiles).forEach(pName => {
-            const opt = document.createElement('option');
-            opt.value = pName;
-            opt.innerText = pName;
-            if (pName === appState.activeProfile) opt.selected = true;
-            select.appendChild(opt);
-        });
-
-        modal.classList.remove('hidden');
+        select.innerHTML = Object.keys(appState.profiles).map(p => `
+            <option value="${p}" ${p === appState.activeProfile ? 'selected' : ''}>${p} (${appState.profiles[p].length} visited)</option>
+        `).join('');
+        document.getElementById('modal-profile').classList.remove('hidden');
     }
 
     function closeProfileModal() {
@@ -1141,33 +959,94 @@
     }
 
     function switchProfile(profileName) {
-        if (!appState.profiles[profileName]) return;
         appState.activeProfile = profileName;
-        document.getElementById('active-profile-badge').innerText = profileName;
-        saveStateToLocalStorage();
-        updateUIStats();
-        
-        if (currentTab === 'browse') renderBrowseList();
-        else if (currentTab === 'ranked') renderRankedList();
-        else if (currentTab === 'map') updateMapMarkers();
-
-        showToast(`Switched to profile: ${profileName}`, "success");
+        updateProfileBadge();
+        saveState();
+        switchTab(appState.currentTab);
+        showToast(`Switched to profile: ${profileName}`);
     }
 
     function createNewProfile() {
         const input = document.getElementById('new-profile-input');
         const name = input.value.trim();
-
         if (!name) return;
+
         if (appState.profiles[name]) {
-            showToast("Profile name already exists", "info");
+            alert("A profile with this name already exists.");
             return;
         }
 
-        appState.profiles[name] = { visitedKeys: [], rankedKeys: [] };
+        appState.profiles[name] = [];
+        appState.activeProfile = name;
         input.value = '';
-        switchProfile(name);
+        
+        updateProfileBadge();
+        saveState();
         openProfileModal();
+        switchTab(appState.currentTab);
+        showToast(`Created profile: ${name}`);
+    }
+
+    // Share & Email Exporting
+    function openShareModal() {
+        const activeIds = getActiveRankedIds();
+        const textPreview = document.getElementById('share-text-preview');
+        
+        if (activeIds.length === 0) {
+            textPreview.value = "No cities marked as visited yet!";
+        } else {
+            let output = `My Top Ranked Visited Cities (${appState.activeProfile}):\n\n`;
+            activeIds.forEach((id, idx) => {
+                const c = CITIES_DATA.find(x => x.id === id);
+                if (c) {
+                    const popStr = appState.showPopulation ? ` ${formatPop(c.pop)}` : '';
+                    output += `${idx + 1}. ${c.name}${popStr} - ${c.state}, ${c.country}\n`;
+                }
+            });
+            textPreview.value = output;
+        }
+        
+        document.getElementById('modal-share').classList.remove('hidden');
+    }
+
+    function closeShareModal() {
+        document.getElementById('modal-share').classList.add('hidden');
+    }
+
+    function copyShareText() {
+        const text = document.getElementById('share-text-preview').value;
+        navigator.clipboard.writeText(text);
+        showToast("Rankings copied to clipboard!");
+    }
+
+    function sendEmailCopy() {
+        const email = document.getElementById('share-email-input').value.trim();
+        const text = document.getElementById('share-text-preview').value;
+        const subject = encodeURIComponent(`My Top Ranked Cities - ${appState.activeProfile}`);
+        const body = encodeURIComponent(text);
+        
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+
+    function exportList(type) {
+        const activeIds = getActiveRankedIds();
+        if (type === 'text') {
+            let output = `My Top Cities (${appState.activeProfile}):\n`;
+            activeIds.forEach((id, idx) => {
+                const c = CITIES_DATA.find(x => x.id === id);
+                if (c) output += `${idx + 1}. ${c.name}, ${c.state}, ${c.country}\n`;
+            });
+            navigator.clipboard.writeText(output);
+            showToast("Copied text to clipboard!");
+        } else if (type === 'json') {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appState, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `city_rankings_${appState.activeProfile.replace(/\s+/g, '_')}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
     }
 
     function importJSONState(event) {
@@ -1178,84 +1057,29 @@
         reader.onload = function(e) {
             try {
                 const imported = JSON.parse(e.target.result);
-                if (Array.isArray(imported)) {
-                    // Assuming imported array of ranked cities
-                    const profile = getCurrentProfile();
-                    imported.forEach(item => {
-                        const match = CITIES_DATA.find(c => c.name.toLowerCase() === item.name.toLowerCase() && c.country.toLowerCase() === item.country.toLowerCase());
-                        if (match) {
-                            const key = getCityKey(match);
-                            if (!profile.visitedKeys.includes(key)) profile.visitedKeys.push(key);
-                            if (!profile.rankedKeys.includes(key)) profile.rankedKeys.push(key);
-                        }
-                    });
-                    saveStateToLocalStorage();
-                    updateUIStats();
-                    showToast("Imported rankings into active profile!", "success");
+                if (imported.profiles) {
+                    appState = { ...appState, ...imported };
+                    saveState();
                     closeProfileModal();
+                    switchTab(appState.currentTab);
+                    showToast("Profile data imported successfully!");
+                } else {
+                    alert("Invalid JSON format.");
                 }
-            } catch (err) {
-                showToast("Invalid JSON file structure", "info");
+            } catch(err) {
+                alert("Error reading JSON file.");
             }
         };
         reader.readAsText(file);
     }
 
-    // Share & Email Modal Logic
-    function openShareModal() {
-        const modal = document.getElementById('modal-share');
-        const preview = document.getElementById('share-text-preview');
-        const profile = getCurrentProfile();
-
-        let text = `Global City Ranker Profile: ${appState.activeProfile}\nVisited: ${profile.visitedKeys.length} / ${CITIES_DATA.length} cities\n\nTop Visited Cities:\n`;
-
-        profile.rankedKeys.forEach((key, index) => {
-            const city = CITIES_DATA.find(c => getCityKey(c) === key);
-            if (city) {
-                text += `${index + 1}. ${city.name}, ${city.country}\n`;
-            }
-        });
-
-        preview.value = text;
-        modal.classList.remove('hidden');
-    }
-
-    function closeShareModal() {
-        document.getElementById('modal-share').classList.add('hidden');
-    }
-
-    function copyShareText() {
-        const preview = document.getElementById('share-text-preview');
-        navigator.clipboard.writeText(preview.value);
-        showToast("Share text copied to clipboard!", "success");
-    }
-
-    function sendEmailCopy() {
-        const email = document.getElementById('share-email-input').value.trim();
-        const body = encodeURIComponent(document.getElementById('share-text-preview').value);
-        const subject = encodeURIComponent(`My Global City Rankings - ${appState.activeProfile}`);
-
-        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-    }
-
-    // Toast Notification System
-    function showToast(message, type = "success") {
-        const toast = document.getElementById('toast');
-        const msgSpan = document.getElementById('toast-message');
-        const icon = document.getElementById('toast-icon');
-
-        msgSpan.innerText = message;
-
-        if (type === "success") {
-            icon.className = "fa-solid fa-circle-check text-emerald-400 text-sm";
-        } else if (type === "info") {
-            icon.className = "fa-solid fa-circle-info text-indigo-400 text-sm";
-        }
-
-        toast.classList.remove('translate-y-20', 'opacity-0');
-
-        setTimeout(() => {
-            toast.classList.add('translate-y-20', 'opacity-0');
-        }, 3000);
-    }
+    // App Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+        loadState();
+        updateCounters();
+        renderBrowseView();
+    });
 </script>
+
+</body>
+</html>
